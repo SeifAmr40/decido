@@ -1,0 +1,171 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   CITRUS — a warm, editorial design system
+   Palette lifted from the uploaded reference:
+     #D96C80 pink  #BF2A52 magenta  #BFB74B olive
+     #F2E9CE cream #F2AE2E amber   #0F1A2E ink
+   Typography: DM Serif Display (editorial headline)
+              + Caveat (handwritten citrus mark)
+              + Inter (body)
+   ============================================================ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-citrus-pink: var(--citrus-pink);
+  --color-citrus-magenta: var(--citrus-magenta);
+  --color-citrus-olive: var(--citrus-olive);
+  --color-citrus-cream: var(--citrus-cream);
+  --color-citrus-amber: var(--citrus-amber);
+  --color-citrus-ink: var(--citrus-ink);
+
+  --font-serif: "DM Serif Display", ui-serif, Georgia, serif;
+  --font-script: "Caveat", "Segoe Script", cursive;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-citrus: 0 20px 60px -20px oklch(0.55 0.22 15 / 0.35);
+  --shadow-card: 0 10px 30px -12px oklch(0.2 0.05 40 / 0.25);
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Citrus tokens (oklch equivalents of the hex palette) */
+  --citrus-pink: oklch(0.72 0.13 8);      /* #D96C80 */
+  --citrus-magenta: oklch(0.52 0.19 15);  /* #BF2A52 */
+  --citrus-olive: oklch(0.75 0.12 118);   /* #BFB74B */
+  --citrus-cream: oklch(0.94 0.03 90);    /* #F2E9CE */
+  --citrus-amber: oklch(0.77 0.17 70);    /* #F2AE2E */
+  --citrus-ink: oklch(0.20 0.04 260);     /* #0F1A2E */
+
+  --background: var(--citrus-cream);
+  --foreground: var(--citrus-ink);
+
+  --card: oklch(0.97 0.02 90);
+  --card-foreground: var(--citrus-ink);
+  --popover: oklch(0.98 0.015 90);
+  --popover-foreground: var(--citrus-ink);
+
+  --primary: var(--citrus-magenta);
+  --primary-foreground: var(--citrus-cream);
+  --secondary: var(--citrus-amber);
+  --secondary-foreground: var(--citrus-ink);
+  --muted: oklch(0.90 0.03 85);
+  --muted-foreground: oklch(0.42 0.05 260);
+  --accent: var(--citrus-pink);
+  --accent-foreground: oklch(0.98 0.01 90);
+
+  --destructive: oklch(0.58 0.23 25);
+  --destructive-foreground: var(--citrus-cream);
+
+  --border: oklch(0.85 0.04 80);
+  --input: oklch(0.90 0.03 85);
+  --ring: var(--citrus-magenta);
+
+  --gradient-sunset: linear-gradient(135deg, var(--citrus-amber) 0%, var(--citrus-pink) 55%, var(--citrus-magenta) 100%);
+  --gradient-grove: linear-gradient(160deg, var(--citrus-olive) 0%, var(--citrus-amber) 100%);
+  --gradient-paper: radial-gradient(ellipse at top left, oklch(0.96 0.03 85) 0%, var(--citrus-cream) 60%, oklch(0.90 0.05 75) 100%);
+}
+
+.dark {
+  --background: var(--citrus-ink);
+  --foreground: var(--citrus-cream);
+  --card: oklch(0.24 0.05 260);
+  --card-foreground: var(--citrus-cream);
+  --popover: oklch(0.22 0.05 260);
+  --popover-foreground: var(--citrus-cream);
+  --primary: var(--citrus-pink);
+  --primary-foreground: var(--citrus-ink);
+  --secondary: var(--citrus-amber);
+  --secondary-foreground: var(--citrus-ink);
+  --muted: oklch(0.28 0.04 260);
+  --muted-foreground: oklch(0.75 0.03 90);
+  --accent: var(--citrus-magenta);
+  --accent-foreground: var(--citrus-cream);
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: var(--citrus-cream);
+  --border: oklch(0.32 0.05 260);
+  --input: oklch(0.30 0.05 260);
+  --ring: var(--citrus-pink);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body { height: 100%; }
+  body {
+    background: var(--gradient-paper);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3 { font-family: var(--font-serif); letter-spacing: -0.01em; }
+}
+
+@utility font-script { font-family: var(--font-script); }
+@utility font-serif  { font-family: var(--font-serif); }
+
+@utility bg-sunset   { background: var(--gradient-sunset); }
+@utility bg-grove    { background: var(--gradient-grove); }
+@utility bg-paper    { background: var(--gradient-paper); }
+
+@utility shadow-citrus { box-shadow: var(--shadow-citrus); }
+@utility shadow-card   { box-shadow: var(--shadow-card); }
+
+@utility text-balance { text-wrap: balance; }
+
+/* ── Clear glass — layered translucency for the citrus system ─────────── */
+@utility glass {
+  background: color-mix(in oklab, var(--color-card) 55%, transparent);
+  backdrop-filter: blur(22px) saturate(160%);
+  border: 1px solid color-mix(in oklab, var(--color-citrus-cream) 60%, transparent);
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 40%, transparent),
+    0 10px 40px -18px color-mix(in oklab, var(--color-citrus-magenta) 40%, transparent);
+}
+.dark .glass {
+  background: color-mix(in oklab, var(--color-card) 45%, transparent);
+  border-color: color-mix(in oklab, var(--color-citrus-cream) 20%, transparent);
+}
+
+/* Hide Lovable / GPT-Engineer floating badge */
+#gptengineer-badge,
+.gptengineer-badge,
+#lovable-badge,
+.lovable-badge,
+iframe[src*="lovable.dev"],
+iframe[src*="gptengineer.app"] {
+  display: none !important;
+}

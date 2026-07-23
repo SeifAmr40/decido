@@ -8,12 +8,17 @@ Before deploying, ensure you configure the required environment variables in you
 
 ## 🔑 Required Environment Variables
 
-To connect your deployment to Supabase, you must set these environment variables:
+To connect your deployment to Supabase, you must set the following environment variables in your deployment dashboard:
 
-| Variable Name | Description | Source |
-|---|---|---|
-| `VITE_SUPABASE_URL` | Your Supabase Project URL | Supabase Dashboard > Settings > API |
-| `VITE_SUPABASE_PUBLISHABLE_KEY` | Your Supabase Anon/Publishable API Key | Supabase Dashboard > Settings > API |
+| Variable Name | Scope | Description | Source |
+|---|---|---|---|
+| `VITE_SUPABASE_URL` | Client & Server | Your Supabase Project URL | Supabase Dashboard > Settings > API |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | Client & Server | Your Supabase Anon/Publishable API Key | Supabase Dashboard > Settings > API |
+| `SUPABASE_URL` | Server | Your Supabase Project URL (fallback for SSR) | Supabase Dashboard > Settings > API |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server | Your Supabase Service Role Key (bypasses RLS) | Supabase Dashboard > Settings > API > service_role (secret) |
+
+> [!WARNING]
+> The `SUPABASE_SERVICE_ROLE_KEY` is a secret key that bypasses Row Level Security (RLS). Ensure it is configured securely in your server environment variables and **never** exposed to client-side code (do not prefix it with `VITE_`).
 
 > [!NOTE]
 > During local development, these environment variables are loaded from `.env`. Do **not** commit your `.env` file to version control.

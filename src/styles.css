@@ -160,12 +160,3 @@
   border-color: color-mix(in oklab, var(--color-citrus-cream) 20%, transparent);
 }
 
-/* Hide Lovable / GPT-Engineer floating badge */
-#gptengineer-badge,
-.gptengineer-badge,
-#lovable-badge,
-.lovable-badge,
-iframe[src*="lovable.dev"],
-iframe[src*="gptengineer.app"] {
-  display: none !important;
-}

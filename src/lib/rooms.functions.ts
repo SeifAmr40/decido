@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
-const GATEWAY_URL = "https://connector-gateway.lovable.dev/google_maps";
+const PLACES_API_URL = "https://places.googleapis.com";
 
 function code6() {
   // Room join code — short + shareable
@@ -17,10 +17,9 @@ async function getAdmin() {
 }
 
 async function placesTextSearch(query: string, latitude?: number, longitude?: number) {
-  const LOVABLE_API_KEY = process.env.LOVABLE_API_KEY;
   const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
-  if (!LOVABLE_API_KEY || !GOOGLE_MAPS_API_KEY) {
-    throw new Error("Google Maps connector not configured");
+  if (!GOOGLE_MAPS_API_KEY) {
+    throw new Error("Google Maps API key not configured");
   }
 
   const reqBody: any = { textQuery: query, maxResultCount: 20 };
@@ -37,11 +36,10 @@ async function placesTextSearch(query: string, latitude?: number, longitude?: nu
     };
   }
 
-  const res = await fetch(`${GATEWAY_URL}/places/v1/places:searchText`, {
+  const res = await fetch(`${PLACES_API_URL}/v1/places:searchText`, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${LOVABLE_API_KEY}`,
-      "X-Connection-Api-Key": GOOGLE_MAPS_API_KEY,
+      "X-Goog-Api-Key": GOOGLE_MAPS_API_KEY,
       "Content-Type": "application/json",
       "X-Goog-FieldMask":
         "places.id,places.displayName,places.formattedAddress,places.location,places.rating,places.priceLevel,places.photos,places.primaryType",
